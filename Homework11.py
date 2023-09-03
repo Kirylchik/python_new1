@@ -1,18 +1,21 @@
-def geometric_progression(a, r, n):
-    current_term = a
-    for _ in range(n):
-        yield current_term
-        current_term *= r
+ # Задание 3
 
-start = float(input("Введите начальный элемент: "))
-ratio = float(input("Введите знаменатель: "))
-count = int(input("Введите количество элементов: "))
+import re
+input = str(input("Введите адрес почты:"))
+def input_data(e_mail):
+    testmail = r"^(?!\.)(?!.*\.@)(?!.*\.\.)[A-Za-z0-9.!#  %&'*+—/=?^_`{|}~]+@(?!\-)[a-z0-9{63}\-]+\.[a-z]+(?!\-)$"
+    result = re.match(testmail,input) is not None
+    print(result)
+input_data(input)
 
-# Создаем генератор
-progression = geometric_progression(start, ratio, count)
+#  Задание 4
 
-# Выводим элементы прогрессии + дебаггинг
-for term in progression:
-    print("Текущий элемент:", term)
-
+import random
+MY_LIST = ["q", "w", "e", "r", "t", "y"]
+def new_generator(numbers):
+    for number in range(1,numbers+1):
+        name = "".join([random.choice(MY_LIST) for i in range(random.randint(1, 10))])
+        yield name + str(number)
+for item in new_generator(5):
+    print(item)
 
